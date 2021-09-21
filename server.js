@@ -13,8 +13,10 @@ app.use(cors());
 
 app.use('/api', router);
 
+app.use(express.static(path.join(__dirname, "build")));
+
 app.get('/', (req, res) => {
-    res.send('Welcome to Porte Bonheur SPA');
+    res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
 const PORT = process.env.PORT || 5000;
